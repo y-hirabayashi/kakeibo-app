@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <title>家計簿 登録</title>
+</head>
+<body>
+    <h1>家計簿 登録</h1>
+    <form method="POST" action="/add">
+        <label>日付:</label>
+        <input type="date" name="date" required><br><br>
+        <label>カテゴリ:</label>
+        <select name="category" class="form-select">
+         <option value="食費">食費</option>
+         <option value="交通費">交通費</option>
+         <option value="趣味">趣味</option>
+         <option value="光熱費">光熱費</option>
+         <option value="給与">給与</option>
+         <option value="その他">その他</option>
+        </select>
+        <label>金額:</label>
+        <input type="number" name="amount" required><br><br>
+        <label>メモ:</label>
+        <input type="text" name="note"><br><br>
+        <button type="submit">登録</button>
+    </form>
+    <a href="/">一覧へ戻る</a>
+</body>
+</html>

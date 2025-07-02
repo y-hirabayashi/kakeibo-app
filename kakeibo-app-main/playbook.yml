@@ -1,0 +1,77 @@
+---
+- name: Setup Kakeibo App on localhost
+  hosts: localhost
+  become: true
+  vars:
+    # venvのpythonを使うようにする
+    ansible_python_interpreter: "/home/test/kakeibo_venv/bin/python"
+  tasks:
+    - name: Show which Python interpreter is used
+      debug:
+        var: ansible_python_interpreter
+
+    - name: Install required packages
+      apt:
+        name:
+          - ca-certificates
+          - curl
+          - gnupg
+        state: present
+        update_cache: yes
+
+    - name: Add Docker GPG key
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker APT repository
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
+    - name: Install Docker
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-compose-plugin
+        state: present
+        update_cache: yes
+
+    - name: Ensure docker service is running
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Copy project files
+      copy:
+        src: ./app/
+        dest: /home/test/kakeibo-app/app/
+        owner: test
+        group: test
+        mode: 0755
+
+    - name: Copy requirements.txt
+      copy:
+        src: requirements.txt
+        dest: /home/test/kakeibo-app/requirements.txt
+        owner: test
+        group: test
+        mode: 0644
+
+    - name: Copy docker-compose.yml
+      copy:
+        src: docker-compose.yml
+        dest: /home/test/kakeibo-app/docker-compose.yml
+        owner: test
+        group: test
+        mode: 0644
+
+    - name: Compose up
+      command:
+        cmd: docker compose up -d
+      args:
+        chdir: /home/test/kakeibo-app
+

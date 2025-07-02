@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <title>月別集計</title>
+</head>
+<body>
+    <h1>月別集計</h1>
+    <a href="/">← 一覧に戻る</a>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>月</th><th>収入</th><th>支出</th><th>差額</th>
+        </tr>
+        {% for month, data in summary %}
+        <tr>
+            <td>{{ month }}</td>
+            <td>{{ data['収入'] }}</td>
+            <td>{{ data['支出'] }}</td>
+            <td>{{ data['収入'] - data['支出'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
