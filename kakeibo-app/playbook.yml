@@ -1,0 +1,56 @@
+---
+- name: Setup Kakeibo App
+  hosts: localhost
+  become: true
+  vars:
+    ansible_python_interpreter: "{{ ansible_env.HOME }}/kakeibo_venv/bin/python"
+  tasks:
+    - name: Docker依存パッケージ
+      apt:
+        name:
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+        state: present
+        update_cache: yes
+
+    - name: Docker公式GPG
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Docker APT登録
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
+    - name: Dockerインストール
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-compose-plugin
+        state: present
+        update_cache: yes
+
+    - name: Dockerサービス起動
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Docker Compose up
+      command:
+        cmd: docker compose up -d
+      args:
+        chdir: "{{ ansible_env.HOME }}/kakeibo-app"
+
+    - name: DB初期化
+      command:
+        cmd: docker compose exec web python /app/init_db.py
+      args:
+        chdir: "{{ ansible_env.HOME }}/kakeibo-app"
+
+
