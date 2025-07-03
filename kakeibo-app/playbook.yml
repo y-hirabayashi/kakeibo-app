@@ -47,6 +47,14 @@
       args:
         chdir: "{{ ansible_env.HOME }}/kakeibo-app"
 
+    - name: Wait for web container to be ready
+      shell: |
+        until docker compose ps | grep "web" | grep "Up"; do
+          sleep 2
+        done
+      args:
+        chdir: "{{ ansible_env.HOME }}/kakeibo-app"
+
     - name: DB初期化
       command:
         cmd: docker compose exec web python /app/init_db.py
