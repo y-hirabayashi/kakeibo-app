@@ -1,6 +1,15 @@
+# Pythonバイトコード
 __pycache__/
 *.pyc
-*.sqlite3
-.env
-ansible_venv/
 
+# 環境変数
+.env
+
+# SQLiteなどのDB
+*.sqlite3
+
+# VSCodeの設定
+.vscode/
+
+# Dockerボリューム
+volumes/
