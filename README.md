@@ -12,5 +12,6 @@
 1. **GitHub からソース取得（手動）**
 
 ```bash
-git clone https://github.com/y-hirabayashi/kakeibo-app.git
+sudo apt install git
+sudo git clone https://github.com/y-hirabayashi/kakeibo-app.git
 cd kakeibo-app
