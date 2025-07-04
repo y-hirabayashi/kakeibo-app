@@ -59,6 +59,6 @@
       command:
         cmd: docker compose exec web python /app/init_db.py
       args:
-        chdir: "{{ ansible_env.HOME }}/kakeibo-app"
+        chdir: "{{ playbook_dir }}"
 
 
