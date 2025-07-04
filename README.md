@@ -36,3 +36,9 @@ source ~/kakeibo_venv/bin/activate
 #newgrp docker
 ansible-playbook playbook.yml
 ```
+
+**docker compose 起動確認**
+
+```basu
+sudo docker compose ps
+```
