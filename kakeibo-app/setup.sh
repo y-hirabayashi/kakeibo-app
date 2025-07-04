@@ -18,7 +18,7 @@ pip install --upgrade pip setuptools wheel
 echo "✅ ansible インストール"
 pip install ansible
 
-echo "✅ ansible playbook 実行"
-ansible-playbook playbook.yml
+#echo "✅ ansible playbook 実行"
+#ansible-playbook playbook.yml
 
 echo "🎉 セットアップ完了"
