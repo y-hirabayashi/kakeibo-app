@@ -4,11 +4,30 @@
   <meta charset="utf-8">
   <title>カテゴリ別月次集計</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="/"><i class="bi bi-journal"></i> My家計簿</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">一覧</a></li>
+          <li class="nav-item"><a class="nav-link" href="/add">新規登録</a></li>
+          <li class="nav-item"><a class="nav-link" href="/export">CSVダウンロード</a></li>
+          <li class="nav-item"><a class="nav-link" href="/summary">月別集計</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="/category_summary">カテゴリ別集計</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <div class="container mt-4">
-    <h1 class="mb-4">カテゴリ別月次集計</h1>
-    <a href="/" class="btn btn-secondary mb-3">← 一覧に戻る</a>
+    <h1>カテゴリ別月次集計</h1>
     {% for month, categories in summary %}
       <h3 class="mt-4">{{ month }}</h3>
       <div class="table-responsive">
@@ -21,17 +40,18 @@
           </thead>
           <tbody>
             {% for category, amount in categories.items() %}
-              <tr>
-                <td>{{ category }}</td>
-                <td class="{% if category in ['給与', '収入'] %}text-success{% else %}text-danger{% endif %}">
-                  {{ "{:,}".format(amount) }}
-                </td>
-              </tr>
+            <tr>
+              <td>{{ category }}</td>
+              <td>{{ "{:,}".format(amount) }}</td>
+            </tr>
             {% endfor %}
           </tbody>
         </table>
       </div>
     {% endfor %}
+    <a href="/" class="btn btn-secondary mt-3"><i class="bi bi-arrow-left"></i> 一覧へ戻る</a>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
