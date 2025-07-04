@@ -31,7 +31,7 @@ sudo chmod +x setup.sh
 
 ```bash
 source ~/kakeibo_venv/bin/activate
-- sudo usermod -aG docker ubuntu(保留)
-- newgrp docker(保留)
+#sudo usermod -aG docker ubuntu
+#newgrp docker
 ansible-playbook playbook.yml
 ```
