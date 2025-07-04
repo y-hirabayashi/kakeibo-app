@@ -3,6 +3,6 @@ services:
     build: .
     container_name: kakeibo-web
     ports:
-      - "5050:5000"
+      - "5000:5000"
     volumes:
       - ./app:/app
