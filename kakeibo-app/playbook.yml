@@ -3,7 +3,7 @@
   hosts: localhost
   become: true
   vars:
-    ansible_python_interpreter: "{{ ansible_env.HOME }}/kakeibo_venv/bin/python"
+    ansible_python_interpreter: "/home/ubuntu/kakeibo_venv/bin/python"
   tasks:
     - name: Docker依存パッケージ
       apt:
@@ -45,7 +45,7 @@
       command:
         cmd: docker compose up -d
       args:
-        chdir: "{{ ansible_env.HOME }}/kakeibo-app"
+        chdir: "/home/ubuntu/kakeibo-app/kakeibo-app"
 
     - name: Wait for web container to be ready
       shell: |
@@ -53,8 +53,8 @@
           sleep 2
         done
       args:
-        chdir: "{{ ansible_env.HOME }}/kakeibo-app"
-
+        chdir: "/home/ubuntu/kakeibo-app/kakeibo-app"
+        
     - name: DB初期化
       command:
         cmd: docker compose exec web python /app/init_db.py
