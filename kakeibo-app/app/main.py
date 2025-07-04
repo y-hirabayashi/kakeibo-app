@@ -106,21 +106,23 @@ def export():
 # --- 月別収支サマリ ---
 @app.route('/summary')
 def summary():
-    conn = get_db_connection()
+    conn = sqlite3.connect('kakeibo.db')
     c = conn.cursor()
     c.execute('SELECT date, category, amount FROM records')
     records = c.fetchall()
     conn.close()
 
-    summary_data = defaultdict(lambda: defaultdict(int))
+    summary_data = defaultdict(lambda: {'収入': 0, '支出': 0})
 
-    for row in records:
-        month = datetime.strptime(row['date'], '%Y-%m-%d').strftime('%Y-%m')
-        category = row['category']
-        amount = int(row['amount'])
-        summary_data[month][category] += amount
+    for date_str, category, amount in records:
+        month = datetime.strptime(date_str, '%Y-%m-%d').strftime('%Y-%m')
+        if category in ['給与', 'その他']:
+            summary_data[month]['収入'] += amount
+        else:
+            summary_data[month]['支出'] += amount
 
     summary_sorted = sorted(summary_data.items())
+
     return render_template('summary.html', summary=summary_sorted)
 
 
