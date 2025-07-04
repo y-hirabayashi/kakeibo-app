@@ -20,12 +20,18 @@ git clone https://github.com/y-hirabayashi/kakeibo-app.git
 ```
 
 **作業ディレクトリ、パーミッションの変更、スクリプト実行**
+
+```bash
 cd kakeibo-app/kakeibo-app
 sudo chmod +x setup.sh
 ./setup.sh
+```
 
 **仮想環境アクティベート、ansible実行**
+
+```bash
 source ~/kakeibo_venv/bin/activate
 - sudo usermod -aG docker ubuntu(保留)
 - newgrp docker(保留)
 ansible-playbook playbook.yml
+```
