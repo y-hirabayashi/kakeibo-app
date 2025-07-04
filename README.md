@@ -12,9 +12,12 @@
 **VirtualBox(EC2) の Ubuntu** を起動（EC2の場合はSSH接続）
 
 **GitHub からソース取得（手動）**
+
+```bash
 sudp apt update
 sudo apt install git
 git clone https://github.com/y-hirabayashi/kakeibo-app.git
+```
 
 **作業ディレクトリ、パーミッションの変更、スクリプト実行**
 cd kakeibo-app/kakeibo-app
