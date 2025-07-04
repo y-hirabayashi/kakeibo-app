@@ -1,28 +1,37 @@
 <!doctype html>
-<html>
+<html lang="ja">
 <head>
-    <title>家計簿 編集</title>
+  <meta charset="utf-8">
+  <title>家計簿 編集</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+  <div class="container mt-4">
     <h1>家計簿 編集</h1>
-    <form method="POST" action="/edit/{{ record[0] }}">
-        <label>日付:</label>
-        <input type="date" name="date" value="{{ record[1] }}" required><br><br>
-        <label>カテゴリ:</label>
+    <form method="POST" action="/edit/{{ record[0] }}" class="mt-4">
+      <div class="mb-3">
+        <label class="form-label">日付:</label>
+        <input type="date" name="date" value="{{ record[1] }}" required class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">カテゴリ:</label>
         <select name="category" class="form-select">
-         <option value="食費">食費</option>
-         <option value="交通費">交通費</option>
-         <option value="趣味">趣味</option>
-         <option value="光熱費">光熱費</option>
-         <option value="給与">給与</option>
-         <option value="その他">その他</option>
+          {% for cat in ['食費', '交通費', '趣味', '光熱費', '給与', 'その他'] %}
+            <option value="{{ cat }}" {% if record[2] == cat %}selected{% endif %}>{{ cat }}</option>
+          {% endfor %}
         </select>
-        <label>金額:</label>
-        <input type="number" name="amount" value="{{ record[3] }}" required><br><br>
-        <label>メモ:</label>
-        <input type="text" name="note" value="{{ record[4] }}"><br><br>
-        <button type="submit">更新</button>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">金額:</label>
+        <input type="number" name="amount" value="{{ record[3] }}" required class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">メモ:</label>
+        <input type="text" name="note" value="{{ record[4] }}" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">更新</button>
+      <a href="/" class="btn btn-secondary ms-2">一覧へ戻る</a>
     </form>
-    <a href="/">一覧へ戻る</a>
+  </div>
 </body>
 </html>
