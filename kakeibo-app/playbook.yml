@@ -1,9 +1,8 @@
 ---
 - name: Setup Kakeibo App
-  hosts: localhost
+  hosts: all
   become: true
-  vars:
-    ansible_python_interpreter: "/home/ubuntu/kakeibo_venv/bin/python"
+
   tasks:
     - name: Docker依存パッケージ
       apt:
@@ -16,12 +15,12 @@
         update_cache: yes
 
     - name: Docker公式GPG
-      apt_key:
+      ansible.builtin.apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
 
     - name: Docker APT登録
-      apt_repository:
+      ansible.builtin.apt_repository:
         repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
         state: present
 
@@ -41,6 +40,14 @@
         state: started
         enabled: true
 
+    - name: kakeibo-app を ~/ にクローン
+      git:
+        repo: https://github.com/y-hirabayashi/kakeibo-app.git
+        dest: "/home/ubuntu/kakeibo-app"
+        version: main
+        update: yes
+        force: yes
+
     - name: Docker Compose up
       command:
         cmd: docker compose up -d
@@ -54,11 +61,10 @@
         done
       args:
         chdir: "/home/ubuntu/kakeibo-app/kakeibo-app"
-        
+
     - name: DB初期化
       command:
         cmd: docker compose exec web python /app/init_db.py
       args:
-        chdir: "{{ playbook_dir }}"
-
+        chdir: "/home/ubuntu/kakeibo-app/kakeibo-app"
 
