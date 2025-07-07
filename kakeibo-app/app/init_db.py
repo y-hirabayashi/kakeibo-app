@@ -3,7 +3,7 @@ import sqlite3
 conn = sqlite3.connect('kakeibo.db')
 c = conn.cursor()
 c.execute('''
-CREATE TABLE records (
+CREATE TABLE IF NOT EXISTS records (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     date TEXT,
     category TEXT,
