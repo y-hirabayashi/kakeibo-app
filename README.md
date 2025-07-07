@@ -33,7 +33,14 @@ sudo chmod +x setup.sh
 
 ```bash
 source ~/kakeibo_venv/bin/activate
-ansible-playbook playbook.yml
+```
+**ホスト(ローカル)**
+```bash
+ansible-playbook -i inventory.ini -l local playbook.yml
+```
+**リモートサーバ**
+```bash
+ansible-playbook -i inventory.ini -l remote playbook.yml
 ```
 
 **docker compose 起動確認**
