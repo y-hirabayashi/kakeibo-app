@@ -29,16 +29,16 @@ sudo chmod +x setup.sh
 ./setup.sh
 ```
 
-**仮想環境アクティベート、ansible実行**
+**仮想環境アクティベート**
 
 ```bash
 source ~/kakeibo_venv/bin/activate
 ```
-**ホスト(ローカル)**
+**ansible実行、ホスト(ローカル)**
 ```bash
 ansible-playbook -i inventory.ini -l local playbook.yml
 ```
-**リモートサーバ**
+**ansible実行、リモートサーバ**
 ```bash
 ansible-playbook -i inventory.ini -l remote playbook.yml
 ```
