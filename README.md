@@ -1,4 +1,5 @@
 # kakeibo-app 環境構築手順
+ユーザー名はubuntuで環境構築してください
 
 ## 🖥 対象環境
 
@@ -28,11 +29,18 @@ sudo chmod +x setup.sh
 ./setup.sh
 ```
 
-**仮想環境アクティベート、ansible実行**
+**仮想環境アクティベート**
 
 ```bash
 source ~/kakeibo_venv/bin/activate
-ansible-playbook playbook.yml
+```
+**ansible実行、ホスト(ローカル)**
+```bash
+ansible-playbook -i inventory.ini -l local playbook.yml
+```
+**ansible実行、リモートサーバ**
+```bash
+ansible-playbook -i inventory.ini -l remote playbook.yml
 ```
 
 **docker compose 起動確認**
