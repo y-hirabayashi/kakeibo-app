@@ -25,7 +25,7 @@ git clone https://github.com/y-hirabayashi/kakeibo-app.git
 **作業ディレクトリ、パーミッションの変更、スクリプト実行**
 
 ```bash
-cd kakeibo-app/kakeibo-app
+cd kakeibo-app
 sudo chmod +x setup.sh
 ./setup.sh
 ```
