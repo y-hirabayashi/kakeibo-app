@@ -52,7 +52,7 @@
       command:
         cmd: docker compose up -d
       args:
-        chdir: "/home/ubuntu/kakeibo-app/kakeibo-app"
+        chdir: "/home/ubuntu/kakeibo-app"
 
     - name: Wait for web container to be ready
       shell: |
@@ -60,11 +60,11 @@
           sleep 2
         done
       args:
-        chdir: "/home/ubuntu/kakeibo-app/kakeibo-app"
+        chdir: "/home/ubuntu/kakeibo-app"
 
     - name: DB初期化
       command:
         cmd: docker compose exec web python /app/init_db.py
       args:
-        chdir: "/home/ubuntu/kakeibo-app/kakeibo-app"
+        chdir: "/home/ubuntu/kakeibo-app"
 
