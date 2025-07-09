@@ -62,9 +62,10 @@
       args:
         chdir: "/home/ubuntu/kakeibo-app"
 
-    - name: DB初期化
-      command:
-        cmd: docker compose exec web python /app/init_db.py
+    - name: DB初期化（初回のみ）
+      command: docker compose exec web python /app/init_db.py
       args:
-        chdir: "/home/ubuntu/kakeibo-app"
+       chdir: /home/ubuntu/kakeibo-app
+       creates: /home/ubuntu/kakeibo-app/db_data/database.db
+      become: true
 

@@ -1,8 +1,9 @@
 services:
   web:
     build: .
-    container_name: kakeibo-web
     ports:
-      - "5000:5000"
+      - "5050:5000"
     volumes:
       - ./app:/app
+      - ./db_data:/app/db_data  # 👈 DBをホストと共有
+

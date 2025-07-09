@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # --- DB 接続共通関数 ---
 def get_db_connection():
-    conn = sqlite3.connect('kakeibo.db')
+    conn = sqlite3.connect('/app/db_data/database.db')
     conn.row_factory = sqlite3.Row  # 行で取り出す時に便利
     return conn
 
@@ -106,7 +106,7 @@ def export():
 # --- 月別収支サマリ ---
 @app.route('/summary')
 def summary():
-    conn = sqlite3.connect('kakeibo.db')
+    conn = sqlite3.connect('/app/db_data/database.db')
     c = conn.cursor()
     c.execute('SELECT date, category, amount FROM records')
     records = c.fetchall()
