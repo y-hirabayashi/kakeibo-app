@@ -75,17 +75,17 @@ ansible-playbook -i inventory.ini -l remote playbook.yml
 CSVエクスポート（UTF-8 BOM付でExcel対応）
 
 🔧 今後の改善予定
-OSS DB（PostgreSQL/MySQL）への切替
-認証機能（ログイン）
-CI/CD（GitHub Actions）
-テスト追加（pytest）
+- OSS DB（PostgreSQL/MySQL）への切替
+- 認証機能（ログイン）
+- CI/CD（GitHub Actions）
+- テスト追加（pytest）
 
 📝 ライセンス
-MIT License
+- MIT License
 
 📬 開発者
-y-hirabayashi
-GitHub: y-hirabayashi
+- y-hirabayashi
+- GitHub: y-hirabayashi
 
 ```yaml
 この内容をそのまま `README.md` に貼り付けて問題ありません。必要ならこれをコミットしてプッシュするコマンドもご案内できます。
