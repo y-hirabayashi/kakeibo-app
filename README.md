@@ -7,8 +7,6 @@
 ## 📦 セットアップ手順
 以下の手順で環境構築を行ってください
 **VirtualBox(EC2) で Ubuntu** を起動（EC2の場合はSSH接続）
-**GitHub からソース取得**
-**仮想環境アクティベート**
 
 **docker compose 起動確認**
 ```basu
@@ -68,11 +66,19 @@ ansible-playbook -i inventory.ini -l local playbook.yml
 # リモート実行
 ansible-playbook -i inventory.ini -l remote playbook.yml
 ```
+
+**docker compose 起動確認**
+```basu
+sudo docker compose ps
+# sudo usermod -aG docker ubuntu
+# newgrp docker
+```
+
 📈 機能一覧
-支出・収入の登録、編集、削除
-月別サマリ表示（収支グラフ）
-カテゴリ別サマリ
-CSVエクスポート（UTF-8 BOM付でExcel対応）
+- 支出・収入の登録、編集、削除
+- 月別サマリ表示（収支グラフ）
+- カテゴリ別サマリ
+- CSVエクスポート（UTF-8 BOM付でExcel対応）
 
 🔧 今後の改善予定
 - OSS DB（PostgreSQL/MySQL）への切替
