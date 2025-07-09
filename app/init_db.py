@@ -2,6 +2,7 @@ import sqlite3
 import os
 
 db_path = '/app/db_data/database.db'
+db_dir = os.path.dirname(db_path)
 
 # ディレクトリがなければ作成
 os.makedirs(db_dir, exist_ok=True)
