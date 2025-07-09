@@ -12,12 +12,12 @@ c = conn.cursor()
 c.execute("""
     CREATE TABLE IF NOT EXISTS records (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        item TEXT,
+        date TEXT,
+        category TEXT,
         amount INTEGER,
-        date TEXT
+        note TEXT
     )
 """)
 conn.commit()
 conn.close()
 print("✅ DB initialized.")
-
