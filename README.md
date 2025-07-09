@@ -8,13 +8,6 @@
 以下の手順で環境構築を行ってください
 **VirtualBox(EC2) で Ubuntu** を起動（EC2の場合はSSH接続）
 
-**docker compose 起動確認**
-```basu
-sudo docker compose ps
-# sudo usermod -aG docker ubuntu
-# newgrp docker
-```
-
 # 🧾 Kakeibo App
 
 Flask × Docker × Ansible 構成のミニマル家計簿アプリケーションです。支出・収入の記録、CSV出力、月別・カテゴリ別サマリ表示が可能です。
