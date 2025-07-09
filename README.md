@@ -17,8 +17,7 @@
 **GitHub からソース取得**
 
 ```bash
-sudo apt update
-sudo apt install git
+sudo apt update && sudo apt install git -y
 git clone https://github.com/y-hirabayashi/kakeibo-app.git
 ```
 
