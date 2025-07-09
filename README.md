@@ -25,7 +25,7 @@ git clone https://github.com/y-hirabayashi/kakeibo-app.git
 
 ```bash
 cd kakeibo-app
-sudo chmod +x setup.sh
+# sudo chmod +x setup.sh
 ./setup.sh
 ```
 
