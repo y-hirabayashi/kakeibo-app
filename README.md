@@ -47,6 +47,6 @@ ansible-playbook -i inventory.ini -l remote playbook.yml
 
 ```basu
 sudo docker compose ps
-#sudo usermod -aG docker ubuntu
-#newgrp docker
+# sudo usermod -aG docker ubuntu
+# newgrp docker
 ```
