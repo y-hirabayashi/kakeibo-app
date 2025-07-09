@@ -3,6 +3,9 @@ import os
 
 db_path = '/app/db_data/database.db'
 
+# ディレクトリがなければ作成
+os.makedirs(db_dir, exist_ok=True)
+
 if os.path.exists(db_path):
     print("✅ DB already exists, skipping init.")
     exit(0)
