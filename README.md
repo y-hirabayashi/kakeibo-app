@@ -18,7 +18,7 @@ sudo docker compose ps
 # 🧾 Kakeibo App
 
 Flask × Docker × Ansible 構成のミニマル家計簿アプリケーションです。支出・収入の記録、CSV出力、月別・カテゴリ別サマリ表示が可能です。
-
+(現在開発途中です。)
 ---
 
 ## 🚀 クイックスタート
@@ -92,7 +92,3 @@ sudo docker compose ps
 📬 開発者
 - y-hirabayashi
 - GitHub: y-hirabayashi
-
-```yaml
-この内容をそのまま `README.md` に貼り付けて問題ありません。必要ならこれをコミットしてプッシュするコマンドもご案内できます。
-```
